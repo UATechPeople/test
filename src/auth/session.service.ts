@@ -32,6 +32,7 @@ export class SessionService {
 
   async deleteSessionsByUser(user): Promise<boolean> {
     await this.sessionDocumentModel.deleteMany({ user: user._id });
+
     return true;
   }
 }
