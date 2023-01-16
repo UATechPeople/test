@@ -1,5 +1,5 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { bcryptConfig } from '../config/bcrypt.config';
+import { bcryptConfig } from '../../config/bcrypt.config';
 import { ConfigType } from '@nestjs/config';
 import * as zxcvbn from 'zxcvbn-typescript';
 import * as bcrypt from 'bcrypt';

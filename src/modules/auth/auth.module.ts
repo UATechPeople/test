@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { SessionService } from './session.service';
 import { Session, SessionSchema } from './session.schema';
 import { ConfigModule } from '@nestjs/config';
-import { authConfig } from '../config/auth.config';
+import { authConfig } from '../../config/auth.config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt.strategy';

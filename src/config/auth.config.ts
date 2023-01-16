@@ -1,5 +1,5 @@
 import { registerAs } from '@nestjs/config';
-import { Env } from '../utils/validate-env';
+import { Env } from '../modules/utils/validate-env';
 
 export const authConfig = registerAs('authConfig', () => ({
   secret: Env.string('JWT_SECRET'),
