@@ -20,3 +20,13 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: medatus
       ME_CONFIG_MONGODB_ADMINPASSWORD: medatus
       ME_CONFIG_MONGODB_URL: mongodb://medatus:medatus@mongo:27017/
+  my-app:
+
+    depends_on:
+      - mongo
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "3333:3333"
+    env_file:
+      - .env
