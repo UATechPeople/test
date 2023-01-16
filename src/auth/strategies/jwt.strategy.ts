@@ -1,4 +1,9 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  Logger,
+} from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
@@ -40,6 +45,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const session = await this.sessionService.getSession(
       validationPayload.sessionID,
     );
+    if (!session) {
+      throw new BadRequestException('please log in');
+    }
 
     return await this.userService.getUser(session);
   }

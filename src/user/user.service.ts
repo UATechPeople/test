@@ -12,8 +12,10 @@ export class UserService {
     private passwordService: PasswordService,
   ) {}
 
-  async getUser(session): Promise<Model<UserDocument>> {
-    return this.userModel.findOne({ _id: session.user });
+  async getUser(session): Promise<UserDocument> {
+    const user = await this.userModel.findOne({ _id: session.user });
+
+    return user;
   }
 
   async getUserByUsername(username): Promise<UserDocument> {
@@ -29,6 +31,9 @@ export class UserService {
     changePasswordDto: ChangePasswordDto,
     user,
   ): Promise<UserDocument> {
+    if (!user) {
+      throw new BadRequestException('please log in');
+    }
     const isPasswordMatching = await this.passwordService.comparePassword(
       changePasswordDto.oldPassword,
       user.password,

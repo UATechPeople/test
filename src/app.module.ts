@@ -8,7 +8,7 @@ import { databaseConfig } from './config/database.config';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { APP_FILTER } from '@nestjs/core';
-import { HttpExceptionFilter } from './auth/exeption-filter/HttpExceptionFilter';
+import { HttpExceptionFilter } from './exeption-filter/HttpExceptionFilter';
 
 @Module({
   imports: [

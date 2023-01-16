@@ -3,8 +3,8 @@ import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { ChangePasswordDto } from '../user/dto/change-password.dto';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { GetUserFromSession } from './decorators/get-session.decorator';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 @Controller()
 export class AuthController {
@@ -33,6 +33,7 @@ export class AuthController {
     @Req() req,
   ): Promise<string> {
     await this.authService.changePassword(changePasswordDto, user);
+
     return 'success';
   }
 }

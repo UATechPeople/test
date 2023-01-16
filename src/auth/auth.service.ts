@@ -34,7 +34,7 @@ export class AuthService {
   async login(loginDto: LoginDto): Promise<string> {
     const user = await this.userService.getUserByUsername(loginDto.username);
     if (!user) {
-      throw new BadRequestException('Wrong credentials provided');
+      throw new BadRequestException(" User don't exist");
     }
     const isPasswordMatching = await this.passwordService.comparePassword(
       loginDto.password,
