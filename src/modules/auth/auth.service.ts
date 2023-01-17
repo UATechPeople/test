@@ -53,6 +53,7 @@ export class AuthService {
     changePasswordDto: ChangePasswordDto,
     user,
   ): Promise<boolean> {
+    this.passwordService.checkPasswordQuality(changePasswordDto.newPassword);
     await this.userService.updatePassword(changePasswordDto, user);
     await this.sessionService.deleteSessionsByUser(user);
     return true;
